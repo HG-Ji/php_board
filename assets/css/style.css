@@ -61,6 +61,7 @@ ul li {
 	text-decoration: none;
 	font-weight: 600;
 	transition: 0.25s;
+	cursor: pointer;
 }
 
 .w-btn-blue {

@@ -32,6 +32,11 @@
         }
     }
 
+    function login()
+    {
+
+    }
+
     function getAjax(url, method, obj)
     {
         return $.ajax({

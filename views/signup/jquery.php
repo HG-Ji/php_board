@@ -32,21 +32,20 @@
         }
     }
 
-    function chkCancel()
+    function signUp()
+    {
+
+    }
+
+    function goLogin()
     {
         if (confirm("정말 취소하시겠습니까?") == true)
         {
-            location.href="/views/board/index.php";
+            location.href="/views/login/index.php";
         }
-        else
-        {
+        else{
             return;
         }
-    }
-
-    function save()
-    {
-
     }
 
     function getAjax(url, method, obj)
