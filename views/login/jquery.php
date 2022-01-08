@@ -1,40 +1,36 @@
 <script src="/assets/js/jquery-3.3.1.js"></script>
 <script src="/assets/js/jquery-3.5.1.min.js"></script>
 <script>
-    $(document).ready(function()
-    {
-        getList();
+    $(document).ready(function(){
+        //로그인 엔터값 키 이벤트
+        $("#user_id").keydown(function (key) {
+            if(key.keyCode == 13){
+                login();
+            }
+        });
+        $("#user_pw").keydown(function (key) {
+            if(key.keyCode == 13){
+                login();
+            }
+        });
     });
 
-    function getList() {
-        var data_list = getAjax('/controllers/BoardController.php', 'post', {type:"getList"}).responseText;
+    function login() {
+        var data_list = getAjax('/controllers/LoginController.php', 'post', {
+            type: "login",
+            user_id: $("#user_id").val(),
+            user_pw: $("#user_pw").val()
+        }).responseText;
         var result = JSON.parse(data_list);
-        if(result != '[]')
+        if (result != 0)
         {
-            $('#data_list_table').addClass('table-bordered table-striped');
-            var html = '';
-            for(var i=0;i<result.length;i++) {
-                html += '<tr>';
-                html += '    <td style="width:10%">' + (result.length-i) + '</td>';
-                html += '    <td style="width:*;"><a href="">' + result[i].title + '</a></td>';
-                html += '    <td style="width:15%">' + result[i].user_id + '</td>';
-                html += '    <td style="width:15%">' + result[i].reg_dttm + '</td>';
-                html += '    <td style="width:10%">' + result[i].cnt + '</td>';
-                html += '</tr>';
-            }
-            $('#list_table').html(html);
+            location.href = "/views/board/index.php";
+            // alert(result[0].name);
         }
         else
         {
-            var html = '<tr height="100%"><td style="text-align: center;">No Data</td></tr>';
-            $('#data_list').html(html);
-            $('#data_list_table').removeClass('table-bordered table-striped');
+            alert("아이디 또는 비밀번호가 잘못 입력 되었습니다.\n아이디와 비밀번호를 정확히 입력해 주세요.");
         }
-    }
-
-    function login()
-    {
-
     }
 
     function getAjax(url, method, obj)

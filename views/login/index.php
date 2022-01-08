@@ -9,11 +9,11 @@
   <h1 style="text-align: center;padding-top:20px;">Login</h1>
     <div style="margin-top:30px;margin-left:50px;">
         <label style="margin-right: 16px;">아이디</label>
-        <input type="text" id="input_id" style="width:65%;height:20px;border-radius: 5px;" />
+        <input type="text" id="user_id" style="width:65%;height:20px;border-radius: 5px;" />
     </div>
     <div style="margin-top:20px;margin-left:50px;">
         <label>비밀번호</label>
-        <input type="password" id="input_pw" style="width:65%;height:20px;border-radius: 5px;" />
+        <input type="password" id="user_pw" style="width:65%;height:20px;border-radius: 5px;" />
     </div>
     <div style="text-align:center;margin-top: 50px;">
         <a href="/views/signup/index.php"><button class="w-btn w-btn-gray">회원가입</button></a>

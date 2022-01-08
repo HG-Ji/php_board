@@ -20,15 +20,6 @@ class DB_helper
     }
     public function Select($query)
     {
-//        $result = mysqli_query($this->connection, $query);
-//        $i = 0;
-//        $return = array();
-//        while ($row = mysqli_fetch_array($result)) {
-//            $return[$i] = $row;
-//            $i++;
-//        }
-//        return $return;
-
         $result = mysqli_query($this->connection,"set names utf8;");
         $result = mysqli_query($this->connection, $query);
         $i = 0;
@@ -39,6 +30,15 @@ class DB_helper
         }
         @mysqli_close($this->connection);
         return $return;
+    }
+    public function Insert($query)
+    {
+        $result = mysqli_query($this->connection,"set names utf8;");
+        $result = mysqli_query($this->connection, $query);
+        $result = mysqli_query($this->connection, 'SELECT LAST_INSERT_ID();');
+        $result = mysqli_fetch_array($result);
+//        @mysqli_close($this->connection);
+        return $result[0];
     }
     public function Query($query)
     {
@@ -110,12 +110,6 @@ class DB_helper
         mysqli_close($this->connect);
         return $result[0];
     }
-//    public function Connection()
-//    {
-//        $config = new init_Config();
-//        $this->connect = @mysqli_connect($config->host, $config->userid, $config->password, $config->dbname);
-//        $result = mysqli_query($this->connect,"set names utf8;");
-//    }
     public function Disconnect()
     {
         mysqli_close($this->connection);

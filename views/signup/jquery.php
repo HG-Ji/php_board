@@ -34,7 +34,25 @@
 
     function signUp()
     {
-
+        var result = getAjax('/controllers/LoginController.php', 'post', {
+            type: "signUp",
+            user_id: $("#user_id").val(),
+            user_pw: $("#user_pw").val(),
+            user_name: $("#user_name").val()
+        }).responseText;
+        if (result > 0)
+        {
+            if(confirm("회원가입이 완료되었습니다.\n로그인 하시겠습니까?")){
+                location.href = "/views/login/index.php";
+            }
+            else{
+                return;
+            }
+        }
+        else
+        {
+            alert("모든 입력 정보를 확인하여주세요.");
+        }
     }
 
     function goLogin()

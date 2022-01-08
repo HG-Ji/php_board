@@ -46,7 +46,8 @@
 
     function save()
     {
-
+        var result = getAjax('/controllers/WriteController.php', 'post',
+            {type:"save", title:$("#title").val(), content:$("#content").val(), user_id:$("#user_id").val()}).responseText;
     }
 
     function getAjax(url, method, obj)

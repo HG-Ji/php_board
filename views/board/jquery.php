@@ -19,7 +19,13 @@
                 html += '    <td style="width:*;"><a href="">' + result[i].title + '</a></td>';
                 html += '    <td style="width:15%">' + result[i].user_id + '</td>';
                 html += '    <td style="width:15%">' + result[i].reg_dttm + '</td>';
-                html += '    <td style="width:10%">' + result[i].cnt + '</td>';
+                if (result[i].cnt==null || result[i].cnt=="null")
+                {
+                    html += '    <td style="width:10%">0</td>';
+                }
+                else{
+                    html += '    <td style="width:10%">' + result[i].cnt + '</td>';
+                }
                 html += '</tr>';
             }
             $('#list_table').html(html);
